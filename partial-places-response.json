@@ -1,0 +1,34 @@
+{
+  geometry: {
+    location: {
+      lat: 33.785402,
+      lng: -84.412162
+    }
+  },
+  icon: "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+  id: "56db76623413e20e2cff841098398e66826946a3",
+  name: "YEAH! BURGER",
+  opening_hours: {
+    open_now: true,
+    weekday_text: [ ]
+  },
+  photos: [
+    {
+      height: 512,
+      html_attributions: [ ],
+      photo_reference: "CnRnAAAAa1RKia3zKV5ZiCInFbbb4BjGiyIPMQeru6spOkjvM4AhNe-H_e4if4knpuUePzsTg8bnXAsnryWkqJb8eAf6UahISgEf27wBy-oaxprC9lKPmFgJ7JZgPKpeR3Yvv9FKsUQoO3GIoGh7xorBmtJp4xIQYjfp4loaC3xq4wY1-BvqfhoULNGugg5QirH8pUg5sHuYZ5oSik4",
+      width: 341
+    }
+  ],
+  place_id: "ChIJPTTZh-sE9YgRto8BbGMXR1I",
+  price_level: 2,
+  rating: 4.3,
+  reference: "CmRfAAAA0zROFI_70n3_QCoHnI46lu__766D8M-FEpvP8mvDCzdRRdpA-6YmBv-gUAUoeplZDoJcO_V6PoCKswTeTPQyVzpcbClo3YA0shQloHGg7c9eTH8iAKOyNdjpTPFyW2ASEhCzEDq8L9uz4YI7D1mzQ9keGhRBMhTh8W66XfoWG2Gd3mFFQ-nSqQ",
+  scope: "GOOGLE",
+  types: [
+    "restaurant",
+    "food",
+    "establishment"
+  ],
+  vicinity: "1168 Howell Mill Road ,suite E, Atlanta"
+}

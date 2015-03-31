@@ -1,0 +1,27 @@
+apply plugin: 'spring-boot'
+apply plugin: 'com.moowork.node'
+
+apply plugin: 'com.moowork.gulp'
+
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: spring_boot_version
+}
+
+bootRun {
+  args = ["--spring.profiles.active=prod"]
+}
+
+task setProdProperties(dependsOn: bootRun) << {
+    doFirst {
+        System.setProperty('spring.profiles.active', 'prod')
+    }
+}
+
+
+gulp_build.dependsOn 'npmInstall'
+gulp_build.dependsOn 'bower'
+processResources.dependsOn gulp_build
+test.dependsOn gulp_test
+bootRun.dependsOn gulp_test
+

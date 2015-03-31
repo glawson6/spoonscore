@@ -1,0 +1,84 @@
+{
+  "html_attributions" : [],
+  "result" : {
+    "address_components" : [
+      {
+        "long_name" : "4274B",
+        "short_name" : "4274B",
+        "types" : [ "street_number" ]
+      },
+      {
+        "long_name" : "Peachtree Road",
+        "short_name" : "Peachtree Rd",
+        "types" : [ "route" ]
+      },
+      {
+        "long_name" : "Atlanta",
+        "short_name" : "Atlanta",
+        "types" : [ "locality", "political" ]
+      },
+      {
+        "long_name" : "Georgia",
+        "short_name" : "GA",
+        "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+        "long_name" : "United States",
+        "short_name" : "US",
+        "types" : [ "country", "political" ]
+      },
+      {
+        "long_name" : "30319",
+        "short_name" : "30319",
+        "types" : [ "postal_code" ]
+      }
+    ],
+    "adr_address" : "\u003cspan class=\"street-address\"\u003e4274B Peachtree Road\u003c/span\u003e, \u003cspan class=\"locality\"\u003eAtlanta\u003c/span\u003e, \u003cspan class=\"region\"\u003eGA\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e30319\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eUnited States\u003c/span\u003e",
+    "formatted_address" : "4274B Peachtree Road, Atlanta, GA 30319, United States",
+    "formatted_phone_number" : "(678) 480-4973",
+    "geometry" : {
+      "location" : {
+        "lat" : 33.867959,
+        "lng" : -84.335598
+      }
+    },
+    "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+    "id" : "28b6658f4ef9c5ae30936b19f3f063d3fdeb2caa",
+    "international_phone_number" : "+1 678-480-4973",
+    "name" : "The Portable Chef",
+    "photos" : [
+      {
+        "height" : 479,
+        "html_attributions" : [],
+        "photo_reference" : "CnRnAAAAUFtGqddVwLUc0rV32vRM7Usjdpxi0ZeodS6iilGrUaTWLCHWyKUHYzD7EANh4wVMeBj-bSlG5ZiLDDFSHtW6xP9baNrAeH4kr9JeoZA4txONy5Zk0mmipsmTGBXvrl8YTpvzACe2tzFihJyBxG_AixIQl5C1gMYE8a5OOilrNTU7nhoUk7SqnLpBwcED7c4NcHS6hMRb6sc",
+        "width" : 640
+      }
+    ],
+    "place_id" : "ChIJ4TcafcAI9YgRICWsUhZAvTY",
+    "reference" : "CnRkAAAAdEuU0Q5IaIBi33L9TAC6IwoKUA_S1YxVzUCbuw-kBKpv4VhHBeArpgMWnNGDNHpeWT-uqlRCR7ixias4e3sVcCAKcYPLo574jeeho45y0uWbQSK4HtgkQqG1Q2SDyekydXPoJ7K2DAA9tTN3rmNwsBIQsvbD-9rRy4NBT3AgsMLgixoUMOVin6zm6lzP_KdAnJ4xahR5hbU",
+    "reviews" : [
+      {
+        "aspects" : [
+          {
+            "rating" : 3,
+            "type" : "overall"
+          }
+        ],
+        "author_name" : "Mumsy Freeman",
+        "author_url" : "https://plus.google.com/108536606826799562999",
+        "language" : "en",
+        "rating" : 5,
+        "text" : "Dinner for two or a full catered party, THIS is your guy! Our daughter purchased a private dinner for two served in our home. The food was everything! The presentation was beautiful and the attention to detail was out of this world! He brought all the needed supplies and cleaned everything when dinner was complete. Hands down THE BEST private dinner ever! If you're looking for amazing food, great service and an unforgettable experience, I would definitely recommend Chef Chip with The Portable Chef. My husband and I are truly grateful for such a wonderful experience. Thank you Chef Chip!",
+        "time" : 1425252822
+      }
+    ],
+    "scope" : "GOOGLE",
+    "types" : [ "food", "establishment" ],
+    "url" : "https://plus.google.com/102929174563175188177/about?hl=en-US",
+    "user_ratings_total" : 1,
+    "utc_offset" : -240,
+    "vicinity" : "4274B Peachtree Road, Atlanta",
+    "website" : "http://www.theportablechef.com/"
+  },
+  "status" : "OK"
+}

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.codahale.metrics:metrics-ehcache:3.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.codahale.metrics/metrics-ehcache/3.0.2/c86290464c1703728f3e6554eb03e12a727bc919/metrics-ehcache-3.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.codahale.metrics/metrics-ehcache/3.0.2/15c7300d332c78f3b16108675e2cfbdc85815bb/metrics-ehcache-3.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

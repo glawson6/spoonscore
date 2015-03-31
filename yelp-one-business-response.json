@@ -1,0 +1,42 @@
+{
+  "is_claimed": true,
+  "rating": 4,
+  "mobile_url": "http://m.yelp.com/biz/el-mexicano-atlanta",
+  "rating_img_url": "http://s3-media4.fl.yelpassets.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+  "review_count": 90,
+  "name": "El Mexicano",
+  "snippet_image_url": "http://s3-media1.fl.yelpassets.com/photo/-LE-LEcMawWamFM13g8rrA/ms.jpg",
+  "rating_img_url_small": "http://s3-media4.fl.yelpassets.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+  "url": "http://www.yelp.com/biz/el-mexicano-atlanta",
+  "phone": "4046223501",
+  "snippet_text": "This place is so great. It's cheap, simple, and delicious. And I feel like it's pretty authentic. They have a giant jug of horchata at the counter. \n\nThe...",
+  "image_url": "http://s3-media4.fl.yelpassets.com/bphoto/QKMjOG7s0e6vPW86TdyImg/ms.jpg",
+  "categories": [
+    [
+      "Mexican",
+      "mexican"
+    ]
+  ],
+  "display_phone": "+1-404-622-3501",
+  "rating_img_url_large": "http://s3-media2.fl.yelpassets.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+  "id": "el-mexicano-atlanta",
+  "is_closed": false,
+  "location": {
+    "city": "Atlanta",
+    "display_address": [
+      "1341 Moreland Ave SE",
+      "Atlanta, GA 30316"
+    ],
+    "geo_accuracy": 8,
+    "postal_code": "30316",
+    "country_code": "US",
+    "address": [
+      "1341 Moreland Ave SE"
+    ],
+    "coordinate": {
+      "latitude": 33.7183914,
+      "longitude": -84.3506393
+    },
+    "state_code": "GA"
+  }
+}

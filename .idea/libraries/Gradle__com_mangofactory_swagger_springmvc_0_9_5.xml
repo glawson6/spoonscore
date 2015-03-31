@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.mangofactory:swagger-springmvc:0.9.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mangofactory/swagger-springmvc/0.9.5/89271a637ae467075e36dfbf057478d0a70b934e/swagger-springmvc-0.9.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mangofactory/swagger-springmvc/0.9.5/610040482e31771b1b83426057a42fe0e383c081/swagger-springmvc-0.9.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

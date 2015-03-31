@@ -1,0 +1,66 @@
+US	57271	Vienna	South Dakota	SD	Clark	025			44.7362	-97.5307
+US	57278	Willow Lake	South Dakota	SD	Clark	025			44.6272	-97.6747
+US	57322	Carpenter	South Dakota	SD	Clark	025			44.6648	-97.9168
+US	57010	Burbank	South Dakota	SD	Clay	027			42.7638	-96.8466
+US	57037	Irene	South Dakota	SD	Clay	027			43.1027	-97.2558
+US	57044	Meckling	South Dakota	SD	Clay	027			42.849	-97.0922
+US	57069	Vermillion	South Dakota	SD	Clay	027			42.7951	-96.9258
+US	57073	Wakonda	South Dakota	SD	Clay	027			42.996	-97.0694
+US	57201	Watertown	South Dakota	SD	Codington	029			44.9043	-97.124
+US	57202	Waverly	South Dakota	SD	Codington	029			44.9776	-97.1884
+US	48376	Novi	Michigan	MI	Oakland	125			42.471	-83.4748
+US	48377	Novi	Michigan	MI	Oakland	125			42.4992	-83.4773
+US	48380	Milford	Michigan	MI	Oakland	125			42.602	-83.6508
+US	48381	Milford	Michigan	MI	Oakland	125			42.5758	-83.5924
+US	48382	Commerce Township	Michigan	MI	Oakland	125			42.5834	-83.5009
+US	48212	Hamtramck	Michigan	MI	Wayne	163			42.4081	-83.0583
+US	48213	Detroit	Michigan	MI	Wayne	163			42.3982	-82.9925
+US	20016	Washington	District of Columbia	DC	District of Columbia	001			38.9381	-77.086
+US	20017	Washington	District of Columbia	DC	District of Columbia	001			38.9367	-76.994
+US	20018	Washington	District of Columbia	DC	District of Columbia	001			38.9277	-76.9762
+US	20019	Washington	District of Columbia	DC	District of Columbia	001			38.8902	-76.9376
+US	20020	Washington	District of Columbia	DC	District of Columbia	001			38.86	-76.9742
+US	20022	Washington	District of Columbia	DC		001			38.945	-77.0364
+US	20023	Washington	District of Columbia	DC		001			38.8654	-77.0495
+US	20024	Washington	District of Columbia	DC	District of Columbia	001			38.8759	-77.016
+US	20026	Washington	District of Columbia	DC	District of Columbia	001			38.8933	-77.0146
+US	20027	Washington	District of Columbia	DC		001			38.9007	-77.0501
+US	20029	Washington	District of Columbia	DC	District of Columbia	001			38.8933	-77.0146
+US	48218	River Rouge	Michigan	MI	Wayne	163			42.2692	-83.1364
+US	48219	Detroit	Michigan	MI	Wayne	163			42.426	-83.2495
+US	48221	Detroit	Michigan	MI	Wayne	163			42.426	-83.15
+US	48222	Detroit	Michigan	MI	Wayne	163			42.2399	-83.1508
+US	48223	Detroit	Michigan	MI	Wayne	163			42.3945	-83.2454
+US	99655	Quinhagak	Alaska	AK	Bethel (CA)	050			59.7381	-161.8749
+US	99656	Red Devil	Alaska	AK	Bethel (CA)	050			60.3147	-163.1189
+US	99668	Sleetmute	Alaska	AK	Bethel (CA)	050			61.6346	-157.1183
+US	99679	Tuluksak	Alaska	AK	Bethel (CA)	050			61.1088	-160.9389
+US	99680	Tuntutuliak	Alaska	AK	Bethel (CA)	050			60.3147	-163.1189
+US	99681	Tununak	Alaska	AK	Bethel (CA)	050			60.3147	-163.1189
+US	99690	Nightmute	Alaska	AK	Bethel (CA)	050			60.3147	-163.1189
+US	99613	King Salmon	Alaska	AK	Bristol Bay	060			58.7456	-157.1595
+US	99633	Naknek	Alaska	AK	Bristol Bay	060			58.783	-156.8992
+US	99670	South Naknek	Alaska	AK	Bristol Bay	060			58.6639	-156.9756
+US	99704	Clear	Alaska	AK	Denali	068			64.2966	-149.1608
+US	99729	Cantwell	Alaska	AK	Denali	068			63.3955	-148.8973
+US	99743	Healy	Alaska	AK	Denali	068			63.9171	-149.0111
+US	99744	Anderson	Alaska	AK	Denali	068			63.5436	-149.9867
+US	99755	Denali National Park	Alaska	AK	Denali	068			63.5436	-149.9867
+US	99555	Aleknagik	Alaska	AK	Dillingham (CA)	070			59.2697	-158.6199
+US	99569	Clarks Point	Alaska	AK	Dillingham (CA)	070			58.8173	-158.5299
+US	99576	Dillingham	Alaska	AK	Dillingham (CA)	070			59.0402	-158.5231
+US	99580	Ekwok	Alaska	AK	Dillingham (CA)	070			59.3628	-157.4782
+US	99628	Manokotak	Alaska	AK	Dillingham (CA)	070			59.0096	-158.9897
+US	99636	New Stuyahok	Alaska	AK	Dillingham (CA)	070			59.4882	-157.2905
+US	99678	Togiak	Alaska	AK	Dillingham (CA)	070			59.3292	-160.1123
+US	99701	Fairbanks	Alaska	AK	Fairbanks North Star	090			64.644	-147.5221
+US	99702	Eielson Afb	Alaska	AK	Fairbanks North Star	090			64.6735	-147.0805
+US	99703	Fort Wainwright	Alaska	AK	Fairbanks North Star	090			64.8283	-147.6557
+US	99705	North Pole	Alaska	AK	Fairbanks North Star	090			64.7805	-147.3694
+US	99706	Fairbanks	Alaska	AK	Fairbanks North Star	090			64.8521	-147.9377
+US	99707	Fairbanks	Alaska	AK	Fairbanks North Star	090			64.6998	-147.4051
+US	99708	Fairbanks	Alaska	AK	Fairbanks North Star	090			64.9475	-147.8564
+US	99801	Juneau	Alaska	AK	Juneau City and Boroug	110			58.3628	-134.5294
+US	99802	Juneau	Alaska	AK	Juneau City and Boroug	110			58.4057	-134.5897
+US	99803	Juneau	Alaska	AK	Juneau City and Boroug	110			58.3771	-134.6174
+US	99811	Juneau	Alaska	AK	Juneau City and Boroug	110			58.3835	-134.1978
