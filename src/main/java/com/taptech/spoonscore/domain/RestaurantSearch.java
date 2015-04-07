@@ -10,7 +10,7 @@ public class RestaurantSearch {
     private String city;
     private String state;
     private Integer zipCode;
-    private Double latitutde;
+    private Double latitude;
     private Double longitude;
     private Integer offset;
     private Integer pageSize;
@@ -63,12 +63,29 @@ public class RestaurantSearch {
         this.zipCode = zipCode;
     }
 
-    public Double getLatitutde() {
-        return latitutde;
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("RestaurantSearch{");
+        sb.append("address='").append(address).append('\'');
+        sb.append(", county='").append(county).append('\'');
+        sb.append(", companyName='").append(companyName).append('\'');
+        sb.append(", city='").append(city).append('\'');
+        sb.append(", state='").append(state).append('\'');
+        sb.append(", zipCode=").append(zipCode);
+        sb.append(", latitude=").append(latitude);
+        sb.append(", longitude=").append(longitude);
+        sb.append(", offset=").append(offset);
+        sb.append(", pageSize=").append(pageSize);
+        sb.append('}');
+        return sb.toString();
     }
 
-    public void setLatitutde(Double latitutde) {
-        this.latitutde = latitutde;
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
     public Double getLongitude() {
@@ -94,4 +111,5 @@ public class RestaurantSearch {
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
+
 }

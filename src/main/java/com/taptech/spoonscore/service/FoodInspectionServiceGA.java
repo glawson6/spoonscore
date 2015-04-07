@@ -2,7 +2,6 @@ package com.taptech.spoonscore.service;
 
 import com.taptech.spoonscore.domain.Restaurant;
 import com.taptech.spoonscore.domain.RestaurantSearch;
-import com.taptech.spoonscore.domain.YelpCompany;
 import com.taptech.spoonscore.service.util.SearchUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.examples.HtmlToPlainText;
@@ -17,8 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -32,9 +29,10 @@ public class FoodInspectionServiceGA implements FoodInspectionService {
     private static String BIZ_RESULTS_SELECTOR = "div table tr td table tbody tr td.body div.body span strong";
     private static String RESULTS_OF_SEARCH_SELECTOR = "div table tr td table tbody tr td.body div.body b";
 
-    private static String URL = "http://ga.state.gegov.com/georgia/";
-    private static String URL_QUERY = URL+"search.cfm?start=1&1=1&f=s&r=address&s=";
-    private static String URL_QUERY2 = URL+"search.cfm?start=1&1=1&f=s&r=name&s=";
+    private static final String GEORGIA_SUFFIX = "georgia/";
+    private static String URL = "http://ga.state.gegov.com/";
+    private static String URL_QUERY = URL+GEORGIA_SUFFIX+"search.cfm?start=1&1=1&f=s&r=address&s=";
+    private static String URL_QUERY2 = URL+GEORGIA_SUFFIX+"search.cfm?start=1&1=1&f=s&r=name&s=";
 
     @Override
     public String createFoodInspectionSearchURL(RestaurantSearch restaurantSearch){
@@ -160,12 +158,12 @@ public class FoodInspectionServiceGA implements FoodInspectionService {
                 }
             }
 
-            String reportURLString = URL + hrefValue;
+            String reportURLString = URL + GEORGIA_SUFFIX + hrefValue;
             log.info("Inspection report can be found at {}",reportURLString);
             restaurant.setInspectionLink(reportURLString);
             restaurant.setCompanyName(restaurantSearch.getCompanyName());
             restaurant.setCompanyAddress(restaurantSearch.getAddress());
-            restaurant.setCounty(restaurantSearch.getCounty());
+            restaurant.getLocation().setCounty(restaurantSearch.getCounty());
             /*
             Element span = foundElement.parent();
             int loopIndex = 0;
@@ -200,21 +198,21 @@ public class FoodInspectionServiceGA implements FoodInspectionService {
             log.info("Node => {}, Node2 => {}, Node3 => {}",new Object[]{node.toString(),node2.toString(),node3.toString()});
             */
         } catch (Exception e) {
-            log.error("Exception ",e);
+            log.error("Exception ", e);
         }
 
         return restaurant;
     }
 
     @Override
-    public void setInspectionResults(Restaurant restaurant) {
+    public void setInspectionResults(Restaurant restaurant, boolean isUpdate) {
 
         try {
             // We only want the first two tokens of the address.
             String bizResultsSelector = BIZ_RESULTS_SELECTOR;
             String resultsSelector = RESULTS_OF_SEARCH_SELECTOR;
             //String url = this.createSearchURL(restaurant.getCompanyAddress(), restaurant.getCounty());
-            String url = this.createSearchURL2(restaurant.getCompanyName(), restaurant.getCounty());
+            String url = this.createSearchURL2(restaurant.getCompanyName(), restaurant.getLocation().getCounty());
             log.debug("Getting inspection for restaurant {}",restaurant.toString());
             log.debug("Getting HTML for => {} ", url);
             restaurant.setInspectionSearchLink(url);
@@ -228,52 +226,97 @@ public class FoodInspectionServiceGA implements FoodInspectionService {
             log.debug("resultsElement.html() => {}", resultsElement.html().split(" ")[0]);
             Integer bizResultIndex = 1;
             Element foundElement = null;
-            for (Element element: bizResultsElements){
-                String htmlInner = element.html().toUpperCase();
-                log.debug("bizResultsElements element.html().toUpperCase() => {}",htmlInner);
-                if (htmlInner.contains(restaurant.getCompanyName().toUpperCase())){
-                    foundElement = element;
-                    break;
+            try {
+                for (Element element : bizResultsElements) {
+                    String htmlInner = element.html().toUpperCase();
+                    log.debug("bizResultsElements element.html().toUpperCase() => {}", htmlInner);
+                    if (getMatchedElements(restaurant,element)) {
+                        foundElement = element;
+                        break;
+                    }
+                    bizResultIndex++;
                 }
-                bizResultIndex++;
+            } catch (NullPointerException e){
+                log.error("Error finding element on page ",e.getMessage());
+                throw e;
+            } catch (Exception e){
+                log.error("Error finding element on page ",e.getMessage());
+                throw e;
             }
-            log.debug("foundElement.nodeName() => {} at index {}", foundElement.nodeName(), bizResultIndex);
-
-
-            String ahrefBizResultsSelector = "div table tr td table tbody tr td.body div.body span strong:nth-of-type("+ bizResultIndex+") + br + br + br + a";
-            String brBizResultsSelector = "div table tr td table tbody tr td.body div.body span strong:nth-of-type("+ bizResultIndex+") + br";
-            Elements ahrefBizResultsElements = doc.select(ahrefBizResultsSelector);
-            Elements brBizResultsElements = doc.select(brBizResultsSelector);
             String hrefValue = null;
-            String inspectionStatsString = null;
-            for (Element element: ahrefBizResultsElements){
-                inspectionStatsString = element.html();
-                hrefValue = element.attr("href");
-                log.debug("ahref html of a => [{}] href value {}",inspectionStatsString,hrefValue);
-            }
-            updateInspectionStats(inspectionStatsString, restaurant);
-            if (log.isDebugEnabled()) {
-                for (Element element : brBizResultsElements) {
-                    String htmlInner = element.ownText();
-                    if (element.hasText()) {
-                        log.debug("brElement html of a => [{}], tagName => {}, outerHTML => {}, data => {}",
-                                new Object[]{htmlInner, element.tagName(), element.outerHtml(), brBizResultsElements.toString()});
-                    } else {
-                        HtmlToPlainText plainText = new HtmlToPlainText();
-                        String someText = plainText.getPlainText(element);
-                        log.debug("Here is plain text {}", someText);
+            if (null != foundElement) {
+                log.debug("foundElement.nodeName() => {} at index {}", foundElement.nodeName(), bizResultIndex);
+
+
+                String ahrefBizResultsSelector = "div table tr td table tbody tr td.body div.body span strong:nth-of-type(" + bizResultIndex + ") + br + br + br + a";
+                String brBizResultsSelector = "div table tr td table tbody tr td.body div.body span strong:nth-of-type(" + bizResultIndex + ") + br";
+                Elements ahrefBizResultsElements = doc.select(ahrefBizResultsSelector);
+                Elements brBizResultsElements = doc.select(brBizResultsSelector);
+
+                String inspectionStatsString = null;
+                for (Element element : ahrefBizResultsElements) {
+                    inspectionStatsString = element.html();
+                    hrefValue = element.attr("href");
+                    log.debug("ahref html of a => [{}] href value {}", inspectionStatsString, hrefValue);
+                }
+                updateInspectionStats(inspectionStatsString, restaurant);
+                if (log.isDebugEnabled()) {
+                    for (Element element : brBizResultsElements) {
+                        String htmlInner = element.ownText();
+                        if (element.hasText()) {
+                            log.debug("brElement html of a => [{}], tagName => {}, outerHTML => {}, data => {}",
+                                    new Object[]{htmlInner, element.tagName(), element.outerHtml(), brBizResultsElements.toString()});
+                        } else {
+                            HtmlToPlainText plainText = new HtmlToPlainText();
+                            String someText = plainText.getPlainText(element);
+                            log.debug("Here is plain text {}", someText);
+                        }
                     }
                 }
             }
 
-            String reportURLString = URL + hrefValue;
-            log.info("Inspection report can be found at {}", reportURLString);
-            restaurant.setInspectionLink(reportURLString);
+            if (null != hrefValue) {
+                String reportURLString = URL + GEORGIA_SUFFIX + hrefValue;
+                log.info("Inspection report can be found at {}", reportURLString);
+                restaurant.setInspectionLink(reportURLString);
+                getReportLink(restaurant);
+            }
 
+        } catch (NullPointerException e){
+            log.error("Error finding element on page ",e.getMessage());
         } catch (Exception e) {
-            log.error("Exception ",e.getMessage());
+            log.error("Exception ", e);
         }
 
+    }
+
+    private boolean getMatchedElements(Restaurant restaurant, Element sampleElement){
+        boolean matched = false;
+        String htmlInner = sampleElement.html().toUpperCase();
+        if (htmlInner.contains(restaurant.getCompanyName().toUpperCase())){
+            return true;
+        }
+        if (restaurant.getCompanyName().toUpperCase().contains(htmlInner)){
+            return true;
+        }
+        return matched;
+    }
+
+    private static final String REPORT_LINK_SELECTOR = "div table tbody tr td table tbody tr td.body div.body table tbody tr td.body a";
+    private void getReportLink(Restaurant restaurant) {
+        try{
+            String url = restaurant.getInspectionLink();
+            Document doc = Jsoup.connect(url).userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36").get();
+            Elements reportLinkElements = doc.select(REPORT_LINK_SELECTOR);
+            Element reportLinkElement = reportLinkElements.first();
+            String hrefValue = reportLinkElement.attr("href");
+            String htmlInner = reportLinkElement.html();
+            String reportURL = URL + hrefValue;
+            log.info("Report Link {}",reportURL);
+            restaurant.setViewReportLink(reportURL);
+        } catch (Exception e){
+
+        }
     }
 
     // String should look like this => August 12, 2013 Score: 97, Grade: A

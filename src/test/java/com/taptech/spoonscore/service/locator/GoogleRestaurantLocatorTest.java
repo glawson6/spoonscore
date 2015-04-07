@@ -38,11 +38,13 @@ public class GoogleRestaurantLocatorTest {
         log.info("Starting testGoogleRestaurantLocator");
         RestaurantSearch search = new RestaurantSearch();
         search.setCity("Atlanta");
+        /*
         Collection<Restaurant> restaurants = googleRestaurantLocator.locateRestaurants(search);
 
         for (Restaurant restaurant: restaurants){
             log.info("{}",restaurant);
         }
+        */
 
     }
 }

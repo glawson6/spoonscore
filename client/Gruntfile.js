@@ -75,7 +75,7 @@ module.exports = function (grunt) {
         {
           context: '/api',
           host: 'localhost',
-          port: 3000
+          port: 8080
         }
       ],
       livereload: {
@@ -446,12 +446,12 @@ module.exports = function (grunt) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
-
     grunt.task.run([
       'clean:server',
       'wiredep',
       'concurrent:server',
-      'autoprefixer:server',
+      'autoprefixer',
+      'configureProxies',
       'connect:livereload',
       'watch'
     ]);
@@ -482,6 +482,7 @@ module.exports = function (grunt) {
     'copy:dist',
     'cdnify',
     'cssmin',
+    'imagemin',
     'uglify',
     'filerev',
     'usemin',

@@ -30,6 +30,10 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/ui-router/release/angular-ui-router.js',
       'bower_components/lodash/lodash.js',
+      'bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
+      'bower_components/easeljs/lib/easeljs-0.8.0.combined.js',
+      'bower_components/spinjs/spin.js',
+      'bower_components/angular-busy/dist/angular-busy.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

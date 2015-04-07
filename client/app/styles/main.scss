@@ -89,3 +89,61 @@ body {
     border-bottom: 0;
   }
 }
+
+.lat-long-button{
+  width: 230px;
+}
+
+.lat-long-button-wrapper{
+  margin: 10px 0px 5px 0px;
+}
+
+.lat-long-table{
+  width: 230px;
+
+  td.latlongtitle{
+    width: 75px;
+  }
+  tr{
+    margin: 5px 0px;
+  }
+  .lat-long-row-spacer{
+    height: 5px;
+  }
+}
+
+.address{
+  margin-bottom: 5px;
+}
+
+.spinner-draw {
+  left: 24px !important;
+  top: 24px !important;
+}
+.spinner-holder{
+  position: fixed;
+  top: 50%;
+  left: 35%;
+  border-style: solid;
+  border-width: 1px;
+  width: 192px;
+  border-radius:2em;
+  background-color: rgb(181, 181, 176);
+  bacopacity: 0.4;
+}
+
+.absolute-center{
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.spinner-text{
+  margin-left: 24px;
+  padding-left: 6px;
+  font-size: 32px;
+}
+

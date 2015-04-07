@@ -4,20 +4,24 @@ package com.taptech.spoonscore.domain;
  * Created by tap on 3/26/15.
  */
 public class Restaurant {
+    private String companyPhone;
     private String companyName;
     private String companyAddress;
     private String companyInspectionGrade;
     private String companyInspectionScore;
-    private Double latitude;
-    private Double longitude;
-    private String county;
-    private String zipCode;
-    private String city;
     private Float rating;
+    private String ratingCommentsLink;
     private String inspectionLink;
     private String foundBy;
     private String restaurantID;
     private String inspectionSearchLink;
+    private String imageURL;
+    private Integer inspectionReportTries = 0;
+    private Boolean foundReport = false;
+    private String viewReportLink;
+
+
+    private Location location = new Location();
 
     public String getCompanyName() {
         return companyName;
@@ -51,65 +55,20 @@ public class Restaurant {
         this.companyInspectionScore = companyInspectionScore;
     }
 
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getCounty() {
-        return county;
-    }
-
-    public void setCounty(String county) {
-        this.county = county;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Restaurant{");
-        sb.append("companyName='").append(companyName).append('\'');
-        sb.append(", companyAddress='").append(companyAddress).append('\'');
-        sb.append(", companyInspectionGrade='").append(companyInspectionGrade).append('\'');
-        sb.append(", companyInspectionScore='").append(companyInspectionScore).append('\'');
-        sb.append(", latitude=").append(latitude);
-        sb.append(", longitude=").append(longitude);
-        sb.append(", county='").append(county).append('\'');
-        sb.append(", zipCode='").append(zipCode).append('\'');
-        sb.append(", city='").append(city).append('\'');
-        sb.append(", rating=").append(rating);
-        sb.append(", inspectionLink='").append(inspectionLink).append('\'');
-        sb.append(", foundBy='").append(foundBy).append('\'');
-        sb.append(", restaurantID='").append(restaurantID).append('\'');
-        sb.append(", inspectionSearchLink='").append(inspectionSearchLink).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
-
     public Float getRating() {
         return rating;
     }
 
     public void setRating(Float rating) {
         this.rating = rating;
+    }
+
+    public String getRatingCommentsLink() {
+        return ratingCommentsLink;
+    }
+
+    public void setRatingCommentsLink(String ratingCommentsLink) {
+        this.ratingCommentsLink = ratingCommentsLink;
     }
 
     public String getInspectionLink() {
@@ -119,15 +78,6 @@ public class Restaurant {
     public void setInspectionLink(String inspectionLink) {
         this.inspectionLink = inspectionLink;
     }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getInspectionSearchLink() {
         return inspectionSearchLink;
     }
@@ -152,4 +102,74 @@ public class Restaurant {
         this.restaurantID = restaurantID;
     }
 
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public String getCompanyPhone() {
+        return companyPhone;
+    }
+
+    public void setCompanyPhone(String companyPhone) {
+        this.companyPhone = companyPhone;
+    }
+
+    public Integer getInspectionReportTries() {
+        return inspectionReportTries;
+    }
+
+    public void setInspectionReportTries(Integer inspectionReportTries) {
+        this.inspectionReportTries = inspectionReportTries;
+    }
+
+    public Boolean getFoundReport() {
+        return foundReport;
+    }
+
+    public void setFoundReport(Boolean foundReport) {
+        this.foundReport = foundReport;
+    }
+
+    public String getViewReportLink() {
+        return viewReportLink;
+    }
+
+    public void setViewReportLink(String viewReportLink) {
+        this.viewReportLink = viewReportLink;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Restaurant{");
+        sb.append("companyPhone='").append(companyPhone).append('\'');
+        sb.append(", companyName='").append(companyName).append('\'');
+        sb.append(", companyAddress='").append(companyAddress).append('\'');
+        sb.append(", companyInspectionGrade='").append(companyInspectionGrade).append('\'');
+        sb.append(", companyInspectionScore='").append(companyInspectionScore).append('\'');
+        sb.append(", rating=").append(rating);
+        sb.append(", ratingCommentsLink='").append(ratingCommentsLink).append('\'');
+        sb.append(", inspectionLink='").append(inspectionLink).append('\'');
+        sb.append(", foundBy='").append(foundBy).append('\'');
+        sb.append(", restaurantID='").append(restaurantID).append('\'');
+        sb.append(", inspectionSearchLink='").append(inspectionSearchLink).append('\'');
+        sb.append(", imageURL='").append(imageURL).append('\'');
+        sb.append(", inspectionReportTries=").append(inspectionReportTries);
+        sb.append(", foundReport=").append(foundReport);
+        sb.append(", viewReportLink='").append(viewReportLink).append('\'');
+        sb.append(", location=").append(location);
+        sb.append('}');
+        return sb.toString();
+    }
 }

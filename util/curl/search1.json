@@ -1,0 +1,12 @@
+{
+  "address" : null,
+  "county" : null,
+  "companyName" : null,
+  "city" : null,
+  "state" : "GA",
+  "zipCode" : 30303,
+  "latitutde" : null,
+  "longitude" : null,
+  "offset" : null,
+  "pageSize" : null
+}

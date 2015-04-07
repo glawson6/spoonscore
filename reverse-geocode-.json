@@ -1,0 +1,94 @@
+{
+  address_components: [
+    {
+      long_name: "35",
+      short_name: "35",
+      types: [
+        "street_number"
+      ]
+    },
+    {
+      long_name: "Georgia State University",
+      short_name: "GSU",
+      types: [
+        "establishment"
+      ]
+    },
+    {
+      long_name: "Broad Street Northwest",
+      short_name: "Broad St NW",
+      types: [
+        "route"
+      ]
+    },
+    {
+      long_name: "Fairlie-Poplar",
+      short_name: "Fairlie-Poplar",
+      types: [
+        "neighborhood",
+        "political"
+      ]
+    },
+    {
+      long_name: "Atlanta",
+      short_name: "Atlanta",
+      types: [
+        "locality",
+        "political"
+      ]
+    },
+    {
+      long_name: "Fulton County",
+      short_name: "Fulton County",
+      types: [
+        "administrative_area_level_2",
+        "political"
+      ]
+    },
+    {
+      long_name: "Georgia",
+      short_name: "GA",
+      types: [
+        "administrative_area_level_1",
+        "political"
+      ]
+    },
+    {
+      long_name: "United States",
+      short_name: "US",
+      types: [
+        "country",
+        "political"
+      ]
+    },
+    {
+      long_name: "30303",
+      short_name: "30303",
+      types: [
+        "postal_code"
+      ]
+    }
+  ],
+  formatted_address: "Georgia State University, 35 Broad Street Northwest, Atlanta, GA 30303, USA",
+  geometry: {
+    location: {
+      lat: 33.7550411,
+      lng: -84.38996470000001
+    },
+    location_type: "ROOFTOP",
+    viewport: {
+      northeast: {
+        lat: 33.7563900802915,
+        lng: -84.38861571970851
+      },
+      southwest: {
+        lat: 33.7536921197085,
+        lng: -84.39131368029152
+      }
+    }
+  },
+  place_id: "ChIJsX9Pw4YD9YgRxEAsiCIzVr4",
+  types: [
+    "street_address"
+  ]
+},

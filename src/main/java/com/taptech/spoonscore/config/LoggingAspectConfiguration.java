@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Profile;
 
-@Configuration
-@EnableAspectJAutoProxy
+//@Configuration
+//@EnableAspectJAutoProxy
 public class LoggingAspectConfiguration {
 
     @Bean

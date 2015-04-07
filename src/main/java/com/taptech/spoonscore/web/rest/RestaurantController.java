@@ -3,23 +3,16 @@ package com.taptech.spoonscore.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.taptech.spoonscore.domain.Restaurant;
 import com.taptech.spoonscore.domain.RestaurantSearch;
-import com.taptech.spoonscore.entity.RestaurantScore;
-import com.taptech.spoonscore.entity.User;
-import com.taptech.spoonscore.repository.RestaurantScoreRepository;
 import com.taptech.spoonscore.service.FoodInspectionService;
 import com.taptech.spoonscore.service.RestaurantService;
-import com.taptech.spoonscore.web.rest.dto.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import java.util.Collection;
 
 /**
@@ -33,8 +26,6 @@ public class RestaurantController {
     @Inject
     RestaurantService restaurantService;
 
-    @Inject
-    RestaurantScoreRepository restaurantScoreRepository;
 
     @Inject
     FoodInspectionService foodInspectionService;
@@ -63,16 +54,8 @@ public class RestaurantController {
             produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public Restaurant getInspectionInfo(@RequestBody Restaurant restaurant, HttpServletRequest request, HttpServletResponse response) {
-
-        /*
-        RestaurantScore restaurantScore = restaurantScoreRepository.findOneByRestaurantIdAndFoundBy(restaurant.getRestaurantID(), restaurant.getFoundBy());
-        restaurant.setInspectionLink(restaurantScore.getInspectionLink());
-        restaurant.setCompanyInspectionGrade(restaurant.getCompanyInspectionGrade());
-        restaurant.setCounty(restaurantScore.getCounty());
-        restaurant.setCity(restaurantScore.getCity());
-        restaurant.setZipCode(String.valueOf(restaurantScore.getZipCode()));
-        */
-        foodInspectionService.setInspectionResults(restaurant);
+        //foodInspectionService.setInspectionResults(restaurant,true);
+        restaurantService.updateRestaurant(restaurant,true);
         return restaurant;
     }
     /**

@@ -49,6 +49,8 @@ public class DatabaseConfiguration implements EnvironmentAware {
     @Profile("!" + Constants.SPRING_PROFILE_CLOUD)
     public DataSource dataSource() {
         log.debug("Configuring Datasource");
+        log.debug("propertyResolver.getProperty(\"serverName\") {}",propertyResolver.getProperty("serverName"));
+        log.debug("propertyResolver.getProperty(\"user\") {}",propertyResolver.getProperty("username"));
         if (propertyResolver.getProperty("url") == null && propertyResolver.getProperty("databaseName") == null) {
             log.error("Your database connection pool configuration is incorrect! The application" +
                     "cannot start. Please check your Spring profile, current profiles are: {}",

@@ -1,5 +1,6 @@
 package com.taptech.spoonscore.service.locator;
 
+import com.taptech.spoonscore.domain.Location;
 import com.taptech.spoonscore.domain.Restaurant;
 import com.taptech.spoonscore.domain.RestaurantSearch;
 
@@ -11,6 +12,7 @@ import java.util.Map;
  */
 public interface RestaurantLocator {
     public Collection<Restaurant> locateRestaurants(RestaurantSearch restaurantSearch);
+    public Collection<Restaurant> locateRestaurants(Location location, Integer offset, Integer pageSize);
     public String getName();
     public String setLocatorConfiguration(Map<String, Object> config);
 }

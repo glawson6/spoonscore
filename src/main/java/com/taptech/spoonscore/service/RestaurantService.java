@@ -11,5 +11,5 @@ import java.util.Collection;
 public interface RestaurantService {
 
     Collection<Restaurant> findRestaurants(RestaurantSearch restaurantSearch);
-    Restaurant updateRestaurant(RestaurantSearch restaurantSearch);
+    Restaurant updateRestaurant(Restaurant restaurant, boolean update);
 }

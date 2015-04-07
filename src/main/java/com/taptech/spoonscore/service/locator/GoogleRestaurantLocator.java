@@ -1,5 +1,6 @@
 package com.taptech.spoonscore.service.locator;
 
+import com.taptech.spoonscore.domain.Location;
 import com.taptech.spoonscore.domain.Restaurant;
 import com.taptech.spoonscore.domain.RestaurantSearch;
 import com.taptech.spoonscore.entity.ZipCodes;
@@ -24,7 +25,7 @@ import java.util.*;
  * Created by tap on 3/29/15.
  */
 @Service("GoogleRestaurantLocator")
-public class GoogleRestaurantLocator implements RestaurantLocator {
+public class GoogleRestaurantLocator extends AbstractRestaurantLocator {
     private final Logger log = LoggerFactory.getLogger(GoogleRestaurantLocator.class);
 
     @Inject
@@ -44,8 +45,8 @@ public class GoogleRestaurantLocator implements RestaurantLocator {
         //request.addQuerystringParameter("limit", SEARCH_LIMIT.toString());
         String location = null;
         log.info("Using restaurantSearch {}",restaurantSearch.toString());
-        if (null != restaurantSearch.getLatitutde() && null != restaurantSearch.getLongitude()){
-            location = restaurantSearch.getLatitutde()+","+restaurantSearch.getLongitude();
+        if (null != restaurantSearch.getLatitude() && null != restaurantSearch.getLongitude()){
+            location = restaurantSearch.getLatitude()+","+restaurantSearch.getLongitude();
         } else if (restaurantSearch.getZipCode() != null){
             ZipCodes zipCodes = zipCodesRepository.findOneByZipCode(restaurantSearch.getZipCode());
             location = String.valueOf(zipCodes.getLatitude()) + ","+String.valueOf(zipCodes.getLongitude());
@@ -91,6 +92,7 @@ public class GoogleRestaurantLocator implements RestaurantLocator {
         }
         return restaurants;
     }
+
     private static final String NAME = "GOOGLE";
     private Restaurant extractRestaurant(JSONObject placesJSONObject, RestaurantSearch restaurantSearch) {
         Restaurant restaurant = new Restaurant();
@@ -102,15 +104,15 @@ public class GoogleRestaurantLocator implements RestaurantLocator {
         restaurant.setFoundBy(NAME);
         String vicinity = restaurantJSON.get("vicinity").toString();
         String city = vicinity.contains(",") ? vicinity.split(",")[1] : vicinity;
-        restaurant.setCity(city.trim().toUpperCase());
+        restaurant.getLocation().setCity(city.trim().toUpperCase());
         JSONObject geometry = (JSONObject)restaurantJSON.get("geometry");
         JSONObject location = (JSONObject)geometry.get("location");
         String latStr = location.get("lat").toString();
         String longStr = location.get("lng").toString();
         Double latitude = Double.parseDouble(latStr);
         Double longitude = Double.parseDouble(longStr);
-        restaurant.setLongitude(longitude);
-        restaurant.setLatitude(latitude);
+        restaurant.getLocation().setLongitude(longitude);
+        restaurant.getLocation().setLatitude(latitude);
        // restaurant.setRating(Float.parseFloat(restaurantJSON.get("user_ratings_total").toString()));
         return restaurant;
     }

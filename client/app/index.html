@@ -8,6 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-busy/dist/angular-busy.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -20,6 +21,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <!--
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -32,7 +34,7 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">client</a>
+            <a class="navbar-brand" href="#/">SpoonScore</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -40,22 +42,22 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-
+    -->
     <div class="container">
     <div ng-view=""></div>
     </div>
-
+    <!--
     <div class="footer">
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
       </div>
     </div>
+    -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -82,13 +84,17 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/easeljs/lib/easeljs-0.8.0.combined.js"></script>
+    <script src="bower_components/spinjs/spin.js"></script>
+    <script src="bower_components/angular-busy/dist/angular-busy.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/service/restaurantService.js"></script>
         <!-- endbuild -->
 </body>
 </html>

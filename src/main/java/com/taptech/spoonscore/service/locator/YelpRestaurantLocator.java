@@ -1,5 +1,6 @@
 package com.taptech.spoonscore.service.locator;
 
+import com.taptech.spoonscore.domain.Location;
 import com.taptech.spoonscore.domain.Restaurant;
 import com.taptech.spoonscore.domain.RestaurantSearch;
 import org.json.simple.JSONArray;
@@ -26,7 +27,7 @@ import java.util.Map;
  * Created by tap on 3/29/15.
  */
 @Service("YelpRestaurantLocator")
-public class YelpRestaurantLocator implements RestaurantLocator {
+public class YelpRestaurantLocator extends AbstractRestaurantLocator {
 
     private final Logger log = LoggerFactory.getLogger(YelpRestaurantLocator.class);
 
@@ -53,19 +54,29 @@ public class YelpRestaurantLocator implements RestaurantLocator {
     OAuthService service;
     @Inject
     Token accessToken;
+
+
     @Override
     public Collection<Restaurant> locateRestaurants(RestaurantSearch restaurantSearch) {
 
+        Location location = resolveLocation(restaurantSearch);
         Collection<Restaurant> restaurants = new ArrayList<Restaurant>();
-
         OAuthRequest request = createOAuthRequest(SEARCH_PATH);
         request.addQuerystringParameter("term", DEFAULT_TERM);
-        if (null != restaurantSearch.getCity()) {
-            request.addQuerystringParameter("location", restaurantSearch.getCity());
-        } else if (null != restaurantSearch.getZipCode()){
-            request.addQuerystringParameter("location", restaurantSearch.getZipCode().toString());
+        if (null != location.getLongitude() && null != location.getLatitude()){
+            StringBuilder sb = new StringBuilder(location.getLatitude().toString());
+            sb.append(",").append(location.getLongitude().toString());
+            request.addQuerystringParameter("ll", sb.toString());
+        }
+        else if (null != location.getZipCode()){
+            request.addQuerystringParameter("location", location.getZipCode().toString());
+        } else if (null != location.getCity()) {
+            request.addQuerystringParameter("location", location.getCity());
         }
         request.addQuerystringParameter("limit", SEARCH_LIMIT.toString());
+        if (null != restaurantSearch.getOffset()) {
+            request.addQuerystringParameter("offset", restaurantSearch.getOffset().toString());
+        }
         log.info("Querying {}",request.getCompleteUrl());
         this.service.signRequest(this.accessToken, request);
         Response firstResponse = request.send();
@@ -77,39 +88,31 @@ public class YelpRestaurantLocator implements RestaurantLocator {
             response = (JSONObject) parser.parse(searchResponseJSON);
             //System.out.println("searchResponseJSON => "+searchResponseJSON);
         } catch (ParseException pe) {
-            System.out.println("Error: could not parse JSON response:");
-            System.out.println(searchResponseJSON);
+            log.error("Error: could not parse JSON response:");
+            log.error(searchResponseJSON);
         }
 
         JSONArray businesses = (JSONArray) response.get("businesses");
-        //log.info("businesses {}",businesses.toJSONString());
 
         for (int i = 0; i < businesses.size(); i++){
             JSONObject business = (JSONObject) businesses.get(i);
-            Restaurant restaurant = createRestaurant(business);
+            Restaurant restaurant = createRestaurant(business,location);
             restaurant.setFoundBy(NAME);
+            if (null != restaurant.getLocation().getCounty()) {
+                restaurant.getLocation().setCounty(location.getCounty());
+            }
             restaurants.add(restaurant);
         }
 
-        /*
-        JSONObject firstBusiness = (JSONObject) businesses.get(0);
-        String firstBusinessID = firstBusiness.get("id").toString();
-        System.out.println(String.format(
-                "%s businesses found, querying business info for the top result \"%s\" ...",
-                businesses.size(), firstBusinessID));
-        String businessResponseJSON = this.searchByBusinessId(firstBusinessID.toString());
-        System.out.println(String.format("Result for business \"%s\" found:", firstBusinessID));
-        System.out.println(businessResponseJSON);
-        */
-        //return businessResponseJSON;
         return restaurants;
     }
+
     private static final String RESPONSE_NAME_KEY = "name";
-    private Restaurant createRestaurant(JSONObject business) {
-        log.info("Yelp business found => {}",business.toJSONString());
+    private Restaurant createRestaurant(JSONObject business, Location dmnLocation) {
+        log.debug("Yelp business found => {}", business.toJSONString());
         JSONObject location = (JSONObject)business.get("location");
-        JSONObject coordinateObject = (JSONObject)location.get("coordinate");
-        log.info("coordinateObject => {}",location.get("coordinate").toString());
+        JSONObject coordinateObject = (JSONObject) location.get("coordinate");
+        log.debug("coordinateObject => {}",location.get("coordinate").toString());
         Double latitude = Double.parseDouble(coordinateObject.get("latitude").toString());
         Double longitude = Double.parseDouble(coordinateObject.get("longitude").toString());
         JSONArray address = (JSONArray)location.get("display_address");
@@ -120,13 +123,32 @@ public class YelpRestaurantLocator implements RestaurantLocator {
         }
         Restaurant restaurant = new Restaurant();
         restaurant.setCompanyName(business.get(RESPONSE_NAME_KEY).toString());
-        restaurant.setLatitude(latitude);
-        restaurant.setLongitude(longitude);
-        restaurant.setZipCode(location.get("postal_code").toString());
-        restaurant.setCity(location.get("city").toString());
+        restaurant.getLocation().setLatitude(latitude);
+        restaurant.getLocation().setLongitude(longitude);
+        restaurant.getLocation().setZipCode(location.get("postal_code").toString());
+        restaurant.getLocation().setCity(location.get("city").toString());
         restaurant.setCompanyAddress(addressBuilder.toString());
-        restaurant.setRestaurantID(business.get("id").toString());
+        String id = getJSONValue("id", business);
+        restaurant.setRestaurantID(id);
+        restaurant.getLocation().setId(id);
+        restaurant.setCompanyPhone(getJSONValue("display_phone",business));
+        restaurant.setRatingCommentsLink(getJSONValue("url",business));
+        Float rating = Float.parseFloat(getJSONValue("rating", business));
+        restaurant.setRating(rating);
+        restaurant.setImageURL(getJSONValue("image_url", business));
+        restaurant.getLocation().setState(dmnLocation.getState());
         return restaurant;
+    }
+
+    private String getJSONValue(String key, JSONObject jsonObject){
+        String value = null;
+        if (null != jsonObject){
+            Object hold = jsonObject.get(key);
+            if (null != hold){
+                value = hold.toString();
+            }
+        }
+        return value;
     }
 
     /**
