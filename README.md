@@ -20,6 +20,7 @@ Spoonscore is a Java/Spring/AngularJS project created for the General Assembly W
 * Spring MVC
 * JPA/Hibernate
 * Tomcat
+* Java
 * JavaScript
 * JQuery
 * AngularJS
@@ -35,6 +36,7 @@ Spoonscore is a Java/Spring/AngularJS project created for the General Assembly W
 * Groovy
 * PostgreSQL
 * Responsive Design
+
 
 ##Links
 * [Site on taptech.net](http://spoonscore.taptech.net)
