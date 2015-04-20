@@ -1,10 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
-      <h2>SpoonScore</h2>
+  <div class="row content-box">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-centered">
 
-      <form class="search  lat-long-button" name="myForm" novalidate>
-        <h4 class="search-heading">Search for Restaurants</h4>
+
+
+      <form class="search lat-long-button col-centered" name="myForm" novalidate>
+        <!--h2 class="text-center">SpoonScore</h2-->
+        <h4 class="search-heading text-center">Search for Restaurants</h4>
         <div class="text-center">
         <input placeholder="City, State or Zip" type="text" id="cityStateZip" class="form-control"
                ng-model="cityStateZip" ng-pattern="/^(([a-zA-z]+,(\s)*[a-zA-z]{2,})|\d{5})$/"
@@ -52,9 +54,9 @@
     </div>
   </div>
   <br>
-  <div class="row" ng-show="hasRestaurants()">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
-      <div class="media" ng-repeat="restaurant in restaurants">
+  <div class="row content-box" ng-show="hasRestaurants()">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-centered">
+      <div class="media col-centered" ng-repeat="restaurant in restaurants">
               <div class="media-left">
                 <a href="#">
                   <img class="media-object" src="{{restaurant.imageURL}}" alt="Some Business">

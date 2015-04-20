@@ -12,8 +12,16 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
+  background-color: #F9F9F9;
+}
+.container{
+  background-color: white;
 }
 
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -70,6 +78,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
+    background-color: #F9F9F9;
     max-width: 730px;
   }
 
@@ -147,3 +156,32 @@ body {
   font-size: 32px;
 }
 
+.content-box{
+  border-color: #c9c9c9;
+  border-style: solid;
+  border-width: 1px;
+  padding-bottom: 10px;
+  background-color: white;
+}
+
+.navbar-top{
+}
+
+.nav-image{
+  float: left;
+}
+.nav-container{
+  border-color: #c9c9c9;
+  border-style: solid;
+  border-width: 1px;
+  background-color: white;
+}
+
+.media-object{
+  border-color: #c9c9c9;
+  border-style: solid;
+  border-width: 1px;
+}
+.navbar-default {
+  border-color: #F9F9F9;
+}
