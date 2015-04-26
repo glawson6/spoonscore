@@ -30,9 +30,10 @@ public class FoodInspectionServiceGA implements FoodInspectionService {
     private static String RESULTS_OF_SEARCH_SELECTOR = "div table tr td table tbody tr td.body div.body b";
 
     private static final String GEORGIA_SUFFIX = "georgia/";
-    private static String URL = "http://ga.state.gegov.com/";
-    private static String URL_QUERY = URL+GEORGIA_SUFFIX+"search.cfm?start=1&1=1&f=s&r=address&s=";
-    private static String URL_QUERY2 = URL+GEORGIA_SUFFIX+"search.cfm?start=1&1=1&f=s&r=name&s=";
+    //private static String URL = "http://ga.state.gegov.com/";
+    private static String URL = "http://ga.healthinspections.us/";
+    private static String URL_QUERY = URL+GEORGIA_SUFFIX+"search.cfm?1=1&f=s&r=address&s=";
+    private static String URL_QUERY2 = URL+GEORGIA_SUFFIX+"search.cfm?1=1&f=s&r=name&s=";
 
     @Override
     public String createFoodInspectionSearchURL(RestaurantSearch restaurantSearch){

@@ -79,16 +79,16 @@ public class RestaurantDetails implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "rating")
     private Float rating;
-    @Size(max = 100)
+    @Size(max = 150)
     @Column(name = "rating_comments_link")
     private String ratingCommentsLink;
     @Size(max = 100)
     @Column(name = "image_url")
     private String imageUrl;
-    @Size(max = 100)
+    @Size(max = 150)
     @Column(name = "inspection_report_link")
     private String inspectionReportLink;
-    @Size(max = 100)
+    @Size(max = 150)
     @Column(name = "inspection_link")
     private String inspectionLink;
     @Size(max = 250)
